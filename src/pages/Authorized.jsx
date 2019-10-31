@@ -11,7 +11,8 @@ const getRouteAuthority = (path, routeData) => {
       authorities = route.authority;
     } // match prefix
 
-    if (pathToRegexp(`${route.path}(.*)`).test(path)) {
+    if (pathToRegexp(`${route.path}(.*)`)
+      .test(path)) {
       // exact match
       if (route.path === path) {
         authorities = route.authority || authorities;
@@ -26,22 +27,22 @@ const getRouteAuthority = (path, routeData) => {
 };
 
 const AuthComponent = ({
-  children,
-  route = {
-    routes: [],
-  },
-  location = {
-    pathname: '',
-  },
-  user,
-}) => {
+                         children,
+                         route = {
+                           routes: [],
+                         },
+                         location = {
+                           pathname: '',
+                         },
+                         user,
+                       }) => {
   const { currentUser } = user;
   const { routes = [] } = route;
   const isLogin = currentUser && currentUser.name;
   return (
     <Authorized
       authority={getRouteAuthority(location.pathname, routes) || ''}
-      noMatch={isLogin ? <Redirect to="/exception/403" /> : <Redirect to="/user/login" />}
+      noMatch={isLogin ? <Redirect to="/exception/403"/> : <Redirect to="/user/login"/>}
     >
       {children}
     </Authorized>

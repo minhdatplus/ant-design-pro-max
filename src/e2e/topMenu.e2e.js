@@ -10,6 +10,7 @@ describe('Homepage', () => {
     const haveFooter = await page.evaluate(
       () => document.getElementsByTagName('footer').length > 0,
     );
-    expect(haveFooter).toBeTruthy();
+    expect(haveFooter)
+      .toBeTruthy();
   });
 });

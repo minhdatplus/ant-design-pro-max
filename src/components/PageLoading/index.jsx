@@ -9,7 +9,7 @@ const PageLoading = () => (
       textAlign: 'center',
     }}
   >
-    <Spin size="large" />
+    <Spin size="large" />¬s
   </div>
 );
 

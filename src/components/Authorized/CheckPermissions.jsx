@@ -4,19 +4,19 @@ import { CURRENT } from './renderAuthorize'; // eslint-disable-next-line import/
 import PromiseRender from './PromiseRender';
 
 /**
- * 通用权限检查方法
+ * Common permission check method
  * Common check permissions method
- * @param { 权限判定 | Permission judgment } authority
- * @param { 你的权限 | Your permission description } currentAuthority
- * @param { 通过的组件 | Passing components } target
- * @param { 未通过的组件 | no pass components } Exception
+ * @param { permission judgment | Permission judgment } authority
+ * @param { Your permission | Your permission description } currentAuthority
+ * @param { passed components | Passing components } target
+ * @param { failed components | no pass components } Exception
  */
 const checkPermissions = (authority, currentAuthority, target, Exception) => {
-  // 没有判定权限.默认查看所有
+  // No decision permission. View all by default
   // Retirement authority, return target;
   if (!authority) {
     return target;
-  } // 数组处理
+  } // Array processing
 
   if (Array.isArray(authority)) {
     if (Array.isArray(currentAuthority)) {
@@ -28,7 +28,7 @@ const checkPermissions = (authority, currentAuthority, target, Exception) => {
     }
 
     return Exception;
-  } // string 处理
+  } // string deal with
 
   if (typeof authority === 'string') {
     if (Array.isArray(currentAuthority)) {
@@ -40,18 +40,19 @@ const checkPermissions = (authority, currentAuthority, target, Exception) => {
     }
 
     return Exception;
-  } // Promise 处理
+  } // Promise deal with
 
   if (authority instanceof Promise) {
-    return <PromiseRender ok={target} error={Exception} promise={authority} />;
-  } // Function 处理
+    return <PromiseRender ok={target} error={Exception} promise={authority}/>;
+  } // Function deal with
 
   if (typeof authority === 'function') {
     try {
-      const bool = authority(currentAuthority); // 函数执行后返回值是 Promise
+      const bool = authority(currentAuthority);
+      // The return value after the function is executed is Promise
 
       if (bool instanceof Promise) {
-        return <PromiseRender ok={target} error={Exception} promise={bool} />;
+        return <PromiseRender ok={target} error={Exception} promise={bool}/>;
       }
 
       if (bool) {

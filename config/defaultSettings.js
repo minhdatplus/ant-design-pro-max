@@ -5,7 +5,7 @@ export default {
   contentWidth: 'Fluid',
   fixedHeader: false,
   autoHideHeader: false,
-  fixSiderbar: false,
+  fixSideBar: false,
   colorWeak: false,
   menu: {
     locale: true,
@@ -22,7 +22,7 @@ export const customSetting = {
   contentWidth: 'Fixed',
   fixedHeader: true,
   autoHideHeader: false,
-  fixSiderbar: false,
+  fixSideBar: false,
   menu: {
     locale: true
   },

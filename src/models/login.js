@@ -3,13 +3,14 @@ import { stringify } from 'querystring';
 import { fakeAccountLogin, getFakeCaptcha } from '@/services/login';
 import { setAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
+
 const Model = {
   namespace: 'login',
   state: {
     status: undefined,
   },
   effects: {
-    *login({ payload }, { call, put }) {
+    * login({ payload }, { call, put }) {
       const response = yield call(fakeAccountLogin, payload);
       yield put({
         type: 'changeLoginStatus',
@@ -40,11 +41,11 @@ const Model = {
       }
     },
 
-    *getCaptcha({ payload }, { call }) {
+    * getCaptcha({ payload }, { call }) {
       yield call(getFakeCaptcha, payload);
     },
 
-    *logout(_, { put }) {
+    * logout(_, { put }) {
       const { redirect } = getPageQuery(); // redirect
 
       if (window.location.pathname !== '/user/login' && !redirect) {
@@ -62,7 +63,11 @@ const Model = {
   reducers: {
     changeLoginStatus(state, { payload }) {
       setAuthority(payload.currentAuthority);
-      return { ...state, status: payload.status, type: payload.type };
+      return {
+        ...state,
+        status: payload.status,
+        type: payload.type,
+      };
     },
   },
 };

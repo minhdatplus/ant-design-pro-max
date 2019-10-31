@@ -21,7 +21,7 @@ export default () => (
   <PageHeaderWrapper>
     <Card>
       <Alert
-        message="umi ui 现已发布，欢迎使用 npm run ui 启动体验。"
+        message="umi ui Now released, welcome to npm run ui startup experience。"
         type="success"
         showIcon
         banner
@@ -34,7 +34,7 @@ export default () => (
         <a target="_blank" rel="noopener noreferrer" href="https://pro.ant.design/docs/block">
           <FormattedMessage
             id="app.welcome.link.block-list"
-            defaultMessage="基于 block 开发，快速构建标准页面"
+            defaultMessage="Quickly build standard pages based on block development"
           />
         </a>
       </Typography.Text>
@@ -50,7 +50,7 @@ export default () => (
           rel="noopener noreferrer"
           href="https://pro.ant.design/docs/available-script#npm-run-fetchblocks"
         >
-          <FormattedMessage id="app.welcome.link.fetch-blocks" defaultMessage="获取全部区块" />
+          <FormattedMessage id="app.welcome.link.fetch-blocks" defaultMessage="Get all blocks"/>
         </a>
       </Typography.Text>
       <CodePreview> npm run fetch:blocks</CodePreview>

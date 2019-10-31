@@ -4,22 +4,31 @@ import classNames from 'classnames';
 import NoticeList from './NoticeList';
 import HeaderDropdown from '../HeaderDropdown';
 import styles from './index.less';
+
 const { TabPane } = Tabs;
 export default class NoticeIcon extends Component {
   static Tab = NoticeList;
+
   static defaultProps = {
-    onItemClick: () => {},
-    onPopupVisibleChange: () => {},
-    onTabChange: () => {},
-    onClear: () => {},
-    onViewMore: () => {},
+    onItemClick: () => {
+    },
+    onPopupVisibleChange: () => {
+    },
+    onTabChange: () => {
+    },
+    onClear: () => {
+    },
+    onViewMore: () => {
+    },
     loading: false,
     clearClose: false,
     emptyImage: 'https://gw.alipayobjects.com/zos/rmsportal/wAhyIChODzsoKIOBHcBk.svg',
   };
+
   state = {
     visible: false,
   };
+
   onItemClick = (item, tabProps) => {
     const { onItemClick } = this.props;
 
@@ -27,6 +36,7 @@ export default class NoticeIcon extends Component {
       onItemClick(item, tabProps);
     }
   };
+
   onClear = (name, key) => {
     const { onClear } = this.props;
 
@@ -34,6 +44,7 @@ export default class NoticeIcon extends Component {
       onClear(name, key);
     }
   };
+
   onTabChange = tabType => {
     const { onTabChange } = this.props;
 
@@ -41,6 +52,7 @@ export default class NoticeIcon extends Component {
       onTabChange(tabType);
     }
   };
+
   onViewMore = (tabProps, event) => {
     const { onViewMore } = this.props;
 
@@ -109,7 +121,7 @@ export default class NoticeIcon extends Component {
     const { visible } = this.state;
     const noticeButtonClass = classNames(className, styles.noticeButton);
     const notificationBox = this.getNotificationBox();
-    const NoticeBellIcon = bell || <Icon type="bell" className={styles.icon} />;
+    const NoticeBellIcon = bell || <Icon type="bell" className={styles.icon}/>;
     const trigger = (
       <span
         className={classNames(noticeButtonClass, {

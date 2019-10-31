@@ -1,4 +1,5 @@
 import { queryNotices } from '@/services/user';
+
 const GlobalModel = {
   namespace: 'global',
   state: {
@@ -6,7 +7,7 @@ const GlobalModel = {
     notices: [],
   },
   effects: {
-    *fetchNotices(_, { call, put, select }) {
+    * fetchNotices(_, { call, put, select }) {
       const data = yield call(queryNotices);
       yield put({
         type: 'saveNotices',
@@ -24,7 +25,7 @@ const GlobalModel = {
       });
     },
 
-    *clearNotices({ payload }, { put, select }) {
+    * clearNotices({ payload }, { put, select }) {
       yield put({
         type: 'saveClearedNotices',
         payload,
@@ -42,7 +43,7 @@ const GlobalModel = {
       });
     },
 
-    *changeNoticeReadState({ payload }, { put, select }) {
+    * changeNoticeReadState({ payload }, { put, select }) {
       const notices = yield select(state =>
         state.global.notices.map(item => {
           const notice = { ...item };
@@ -75,7 +76,10 @@ const GlobalModel = {
       },
       { payload },
     ) {
-      return { ...state, collapsed: payload };
+      return {
+        ...state,
+        collapsed: payload
+      };
     },
 
     saveNotices(state, { payload }) {

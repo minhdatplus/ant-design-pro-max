@@ -52,11 +52,11 @@ const GlobalHeaderRight = props => {
           rel="noopener noreferrer"
           className={styles.action}
         >
-          <Icon type="question-circle-o" />
+          <Icon type="question-circle-o"/>
         </a>
       </Tooltip>
-      <Avatar />
-      <SelectLang className={styles.action} />
+      <Avatar/>
+      <SelectLang className={styles.action}/>
     </div>
   );
 };

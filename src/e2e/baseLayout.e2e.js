@@ -28,7 +28,8 @@ describe('Ant Design Pro E2E test', () => {
     const haveFooter = await page.evaluate(
       () => document.getElementsByTagName('footer').length > 0,
     );
-    expect(haveFooter).toBeTruthy();
+    expect(haveFooter)
+      .toBeTruthy();
   };
 
   const routers = formatter(RouterConfig);

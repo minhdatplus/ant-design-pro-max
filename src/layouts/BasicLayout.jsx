@@ -13,6 +13,7 @@ import Authorized from '@/utils/Authorized';
 import RightContent from '@/components/GlobalHeader/RightContent';
 import { isAntDesignPro, getAuthorityFromRouter } from '@/utils/utils';
 import logo from '../assets/logo.svg';
+
 const noMatch = (
   <Result
     status="403"
@@ -31,13 +32,16 @@ const noMatch = (
  */
 const menuDataRender = menuList =>
   menuList.map(item => {
-    const localItem = { ...item, children: item.children ? menuDataRender(item.children) : [] };
+    const localItem = {
+      ...item,
+      children: item.children ? menuDataRender(item.children) : [],
+    };
     return Authorized.check(item.authority, localItem, null);
   });
 
 const defaultFooterDom = (
   <DefaultFooter
-    copyright="2019 蚂蚁金服体验技术部出品"
+    copyright="2019 Ant Financial Service Technology Department produced"
     links={[
       {
         key: 'Ant Design Pro',
@@ -47,7 +51,7 @@ const defaultFooterDom = (
       },
       {
         key: 'github',
-        title: <Icon type="github" />,
+        title: <Icon type="github"/>,
         href: 'https://github.com/ant-design/ant-design-pro',
         blankTarget: true,
       },

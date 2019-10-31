@@ -29,6 +29,7 @@ class GlobalHeaderRight extends Component {
       });
     }
   };
+
   handleNoticeClear = (title, key) => {
     const { dispatch } = this.props;
     message.success(
@@ -44,6 +45,7 @@ class GlobalHeaderRight extends Component {
       });
     }
   };
+
   getNoticeData = () => {
     const { notices = [] } = this.props;
 
@@ -55,7 +57,8 @@ class GlobalHeaderRight extends Component {
       const newNotice = { ...notice };
 
       if (newNotice.datetime) {
-        newNotice.datetime = moment(notice.datetime).fromNow();
+        newNotice.datetime = moment(notice.datetime)
+          .fromNow();
       }
 
       if (newNotice.id) {
@@ -85,19 +88,21 @@ class GlobalHeaderRight extends Component {
     });
     return groupBy(newNotices, 'type');
   };
+
   getUnreadData = noticeData => {
     const unreadMsg = {};
-    Object.keys(noticeData).forEach(key => {
-      const value = noticeData[key];
+    Object.keys(noticeData)
+      .forEach(key => {
+        const value = noticeData[key];
 
-      if (!unreadMsg[key]) {
-        unreadMsg[key] = 0;
-      }
+        if (!unreadMsg[key]) {
+          unreadMsg[key] = 0;
+        }
 
-      if (Array.isArray(value)) {
-        unreadMsg[key] = value.filter(item => !item.read).length;
-      }
-    });
+        if (Array.isArray(value)) {
+          unreadMsg[key] = value.filter(item => !item.read).length;
+        }
+      });
     return unreadMsg;
   };
 

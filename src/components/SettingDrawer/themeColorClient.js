@@ -3,6 +3,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import client from 'webpack-theme-color-replacer/client';
 import generate from '@ant-design/colors/lib/generate';
+
 export default {
   getAntdSerials(color) {
     const lightCount = 9;
@@ -11,8 +12,10 @@ export default {
     let lightens = new Array(lightCount).fill(0);
     lightens = lightens.map((_, i) => client.varyColor.lighten(color, i / divide));
     const colorPalettes = generate(color);
-    const rgb = client.varyColor.toNum3(color.replace('#', '')).join(',');
-    return lightens.concat(colorPalettes).concat(rgb);
+    const rgb = client.varyColor.toNum3(color.replace('#', ''))
+      .join(',');
+    return lightens.concat(colorPalettes)
+      .concat(rgb);
   },
 
   changeColor(color) {
